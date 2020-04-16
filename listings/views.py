@@ -39,9 +39,12 @@ def search(request):
 
     if 'state' in request.GET:
         state = request.GET['state']
-        if state:
-            queryset_list = queryset_list.filter(state__iexact=state)
-    
+        print(state)
+        if state == 'Rent':
+            queryset_list = queryset_list.filter(for_rent_only=True)
+        else:
+            queryset_list = queryset_list.filter(for_rent_only=False)
+
     if 'bedrooms' in request.GET:
         bedrooms = request.GET['bedrooms']
         if bedrooms:

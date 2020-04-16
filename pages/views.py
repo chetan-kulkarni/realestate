@@ -4,7 +4,7 @@ from realtors.models import Realtor
 from listings.choices import bedroom_choices, state_choices, price_choices
 
 def index(request):
-    listing = Listing.objects.order_by('-list_date').filter(is_published='True')[:3]
+    listing = Listing.objects.order_by('-list_date').filter(is_published='True', for_rent_only=False)[:3]
 
     context = {
         'listing': listing,
